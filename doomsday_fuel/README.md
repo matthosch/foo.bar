@@ -37,7 +37,7 @@ So, putting that together, and making a common denominator, gives an answer in t
 #### Test cases
 
 Inputs:
-`
+```
 (int) m = [
   [0, 2, 1, 0, 0],
   [0, 0, 0, 3, 4],
@@ -45,7 +45,7 @@ Inputs:
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0]
 ]
-`
+```
 
 Output:
 `
@@ -53,7 +53,7 @@ Output:
 `
 
 Inputs:
-`
+```
 (int) m = [
   [0, 1, 0, 0, 0, 1],
   [4, 0, 0, 3, 2, 0],
@@ -62,7 +62,7 @@ Inputs:
   [0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0]
 ]
-`
+```
 
 Output:
 `
