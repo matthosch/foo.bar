@@ -1,8 +1,8 @@
 def answer(n):
-    n = long(n)
+    n = int(n)
 
     # define lookup table
-    lookup_table = { 1L: 0, 2L: 1 }
+    lookup_table = { 1: 0, 2: 1 }
 
     def calculate_steps(n):
         # return memoized value in lookup table
@@ -23,6 +23,52 @@ def answer(n):
     # calculate number of steps
     return calculate_steps(n)
 
-print answer("4")
+def test_case_1():
+    n = '4'
+    assert answer(n) == 2
 
-print answer("15")
+def test_case_2():
+    n = '15'
+    assert answer(n) == 5
+
+
+##############################################################
+
+from operator import add, sub
+
+def min_operations(n): 
+    n = int(n)
+    def operation(n, count, operator):
+        # Use list to store passed in n, count values
+        temp = [operator(n, 1), count]
+        # Increment count value while n is even
+        while temp[0] % 2 == 0:
+            temp[0] = temp[0] // 2
+            temp[1] += 1
+        return temp
+
+    count = 0
+    while (n > 1) :
+        # If n is even, divide by 2
+        if (n % 2 == 0): 
+            n //= 2 
+        else:
+            # We want to find the maximum divisions by 2
+            # Comparing the output of each operation,
+            # x[1] returns list based on maximum count value
+            n, count = max(
+                operation(n, count, sub),
+                operation(n, count, add),
+                key=lambda x: x[1]
+            )
+        count += 1
+
+    return count 
+  
+def test_case_3():
+    n = '4'
+    assert min_operations(n) == 2
+
+def test_case_4():
+    n = '15'
+    assert min_operations(n) == 5
