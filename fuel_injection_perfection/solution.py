@@ -39,7 +39,7 @@ from operator import add, sub
 def min_operations(n): 
     n = int(n)
     def operation(n, count, operator):
-        # Use list to store passed in n, count values
+        # Use temp list to store passed in n, count values
         temp = [operator(n, 1), count]
         # Increment count value while n is even
         while temp[0] % 2 == 0:
@@ -53,13 +53,11 @@ def min_operations(n):
         if (n % 2 == 0): 
             n //= 2 
         else:
-            # We want to find the maximum divisions by 2
-            # Comparing the output of each operation,
-            # x[1] returns list based on maximum count value
-            n, count = max(
+            # Comparing the output of each operation, we want
+            # to return temp list based on minimum n value
+            n, count = min(
                 operation(n, count, sub),
-                operation(n, count, add),
-                key=lambda x: x[1]
+                operation(n, count, add)
             )
         count += 1
 
